@@ -19,9 +19,6 @@ import javax.swing.*;
 public class CheckIn extends JFrame implements ActionListener
 {
 	HotelDB hdb;
-       /* public static void main(String[] args) {
-                setCheckIn();
-        }*/
 	String month[] = {"","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	String day[] = {"","1","2","3","4","5","6","7","8","9","10",
 					"11","12","13","14","15","16","17","18","19","20",
@@ -171,28 +168,6 @@ public class CheckIn extends JFrame implements ActionListener
     	botS.addActionListener(this); 
     	
     	con.add(back).setBounds(0,0,900,900);
-    	/*
-    	try
-			{
-			Class.forName("com.mysql.jdbc.Driver");
-
-			connect = DriverManager.getConnection(""
-					+ "jdbc:mysql://localhost/mydatabase"
-					+ "?user=root&password=root");
-
-			s = connect.createStatement();
-			}
-			catch(ClassNotFoundException e)  
-			{
- 				System.err.println("Failed to load driver");
- 				e.printStackTrace();
- 			}
- 			catch(SQLException e)
- 			{
- 				System.err.println("Unable to connect");
- 				e.printStackTrace();
- 			}   
-        */
 
     }
     public void actionPerformed (ActionEvent event)
@@ -206,9 +181,6 @@ public class CheckIn extends JFrame implements ActionListener
     		
    			   String sql = "SELECT * FROM Hotel_CheckIn WHERE room ='"+txt1.getText()+"'";
     			ArrayList<HashMap> list = hdb.db.queryRows(sql);
-				//st=cn.createStatement();
-				//rs=st.executeQuery("SELECT * FROM Hotel_reserve WHERE Room_No ='"+txtRn.getText()+"'");
-				//rs=st.executeQuery("SELECT * FROM Hotel_CheckIn WHERE Room_No ='"+txtRn.getText()+"'");
 				for(HashMap l : list)
 				{
 					Room_No = (String)(l.get("room"));
@@ -229,8 +201,7 @@ public class CheckIn extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(null,"Please fill the remaining spaces!","Message",JOptionPane.INFORMATION_MESSAGE);	
 			}		
 			else
-			{ 
-    		//==compare data===				 
+			{ 				 
     		if(Room_No.equals(txt1.getText()))
     		{
     			JOptionPane.showMessageDialog(null,"The Room is already Occupied!","Message",JOptionPane.INFORMATION_MESSAGE);
@@ -239,7 +210,6 @@ public class CheckIn extends JFrame implements ActionListener
     		else
     		{
     			System.out.println(hdb.db.connect());
-				//"INSERT INTO Reservation (Room_No,Last_Name,Middle_Initial,First_Name,Contact_No,Address,Month,Day,Year,Room_Size,No_Days,Down) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 				sql = " INSERT INTO Hotel_CheckIn(room, name, middle, lastname, contact, address, month, day, year, room_size, no_day, down) VALUES ("
 		                + "'" +txt1.getText() + "','"
 		                +  txt4.getText() + "','"
@@ -265,30 +235,8 @@ public class CheckIn extends JFrame implements ActionListener
     	}
     	if(source == botS)
     	{
-		Room_No = txt1.getText().trim();
-				/*
-                                try
-					{
-					Class.forName("com.mysql.jdbc.Driver");
-                                        
-                                        connect = DriverManager.getConnection(""
-                                                    + "jdbc:mysql://localhost/mydatabase"
-                                                    + "?user=root&password=root");
-                                                    
-                                        s = connect.createStatement();
-					}
-				catch(ClassNotFoundException ex)  
-					{
- 						System.err.println("Failed to load driver");
- 						ex.printStackTrace();
- 					}
- 				catch(SQLException ex)
- 					{
- 						System.err.println("Unable to connect");
- 						ex.printStackTrace();
- 					}
-                                */         
-    		
+	Room_No = txt1.getText().trim();
+				         
          if (!Room_No.equals(""))
          {
         	System.out.println(hdb.db.connect());
@@ -367,38 +315,14 @@ public class CheckIn extends JFrame implements ActionListener
 			} 		 
 	 		if (DResult == JOptionPane.YES_OPTION)
          	{
-                /*
-         	try
-         	{
-			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection(""
-					+ "jdbc:mysql://localhost/mydatabase"
-					+ "?user=root&password=root");
-			s = connect.createStatement();
-			}
-			catch(ClassNotFoundException e)  
-			{
- 				System.err.println("Failed to load driver");
- 				e.printStackTrace();
- 			}
- 			catch(SQLException e)
- 			{
- 				System.err.println("Unable to connect");
- 				e.printStackTrace();
- 			}
-                */
+                
 	 			try
 	 			{
 	 			    System.out.println(hdb.db.connect());   
 			    	Room_No = txt1.getText().trim();	              
                          if ( !Room_No.equals(""))
                          {
-                                   	/*String query = "SELECT * FROM Reservation WHERE Room_No='" + Room_No+"'";
-                					ResultSet rss = stmt.executeQuery(query);
-                					rss.next();
-                					String code=rss.getString(3);*/
-	
-               						String sql = "DELETE from Hotel_reserve" + " WHERE room = '" + Room_No + "'";
+      					String sql = "DELETE from Hotel_reserve" + " WHERE room = '" + Room_No + "'";
                                    	System.out.println(hdb.db.executeQuery(sql));
                                    	int result = 1;
                                    if ( result == 1)
@@ -406,7 +330,6 @@ public class CheckIn extends JFrame implements ActionListener
                                  	dialogmessage = "Reserve Guest Record Deleted!!!";
                     				dialogtype = JOptionPane.WARNING_MESSAGE;
                     				JOptionPane.showMessageDialog((Component)null, dialogmessage, dialogs, dialogtype);
-                    				//clear();
                               		}
                         }  
                  System.out.println(hdb.db.disconnect()); 
@@ -441,14 +364,6 @@ public class CheckIn extends JFrame implements ActionListener
     }
      public  void setCheckIn()
     {
-    	/*CheckIn frame = new CheckIn();
-    	frame.setTitle("Hotel Reservation System");
-    	frame.setVisible(true);
-    	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    	frame.setLocation(100,5);
-    	frame.setSize((screen.width-800),screen.height-50);
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-    	
     	setTitle("Hotel Reservation System");
     	setVisible(true);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

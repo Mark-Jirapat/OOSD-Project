@@ -25,19 +25,8 @@ public class Register extends JFrame
 	private JPasswordField txtConfirmPassword;
 	private JTextField txtName;
 	private JTextField txtEmail;
-        String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic"; // <- เปลี่ยน access ที่เก็บ Pic ไว้
+        String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic";
 	ImageIcon image = new ImageIcon(Access + "\\1.jpeg");
-        
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-                setRegis();
-        }*/
-
-	/**
-	 * Create the frame.
-	 */
 	public Register() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 454, 343);
@@ -229,13 +218,6 @@ public class Register extends JFrame
                 return true;
 	}
     public  void setRegis(){
-        /*Register frame = new Register();
-    	frame.setTitle("Hotel Reservation System");
-    	frame.setVisible(true);
-    	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    	frame.setLocation(100,5);
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-    	
     	setTitle("Hotel Reservation System");
         setVisible(true);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

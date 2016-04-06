@@ -16,17 +16,13 @@ import java.sql.*;
 public class Sample extends JFrame implements ActionListener
 {
 	HotelDB hdb;
-	/*public static void main(String[]args)
-	{ 
-	    setSample();
-    }*/
         JFrame frame= new JFrame("Administrator Login");
         JLabel labTitle = new JLabel("Group-6 Project");
         JLabel labuser = new JLabel("Username:");
 	JLabel labpass = new JLabel("Password:");
 	JTextField txtuser = new JTextField();
 	JPasswordField txtpass = new JPasswordField();
-        String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic"; // <- เปลี่ยน access ที่เก็บ Pic ไว้
+        String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic";
 	JButton bLogin = new JButton(new ImageIcon(Access + "\\ok.jpeg"));
 	JButton bClose = new JButton(new ImageIcon(Access + "\\eks.jpeg"));
         JButton bRegis = new JButton(new ImageIcon(Access + "\\Edit.png"));
@@ -45,11 +41,6 @@ public class Sample extends JFrame implements ActionListener
    	
     public  void setSample()
     {
-           /* Sample p1= new Sample();
-	    p1.setSize(350,190);
-	    p1.setLocation(300,300);
-	    p1.setVisible(true);
-	    p1.setResizable(false);*/
 	    setSize(350,190);
 	    setLocation(300,300);
 	    setVisible(true);
@@ -98,24 +89,6 @@ public class Sample extends JFrame implements ActionListener
     	setContentPane(pane);
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	pane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), ""));
-    	/*
-    	try
-    	{
-			Class.forName("com.mysql.jdbc.Driver");
-
-			connect = DriverManager.getConnection(""
-					+ "jdbc:mysql://localhost/mydatabase"
-					+ "?user=root&password=root");
-
-			s = connect.createStatement();
-        }catch(ClassNotFoundException e){
- 			JOptionPane.showMessageDialog(null,"unable to load driver");
- 			System.exit(0);
- 	}catch(SQLException e){
- 			JOptionPane.showMessageDialog(null,"unable to connect");
- 			System.exit(0);
-	}
-        */
     }
     public void actionPerformed(ActionEvent e)
     {
@@ -153,22 +126,19 @@ public class Sample extends JFrame implements ActionListener
                 	{
                     	JOptionPane.showMessageDialog(null, "INVALID ID OR PASSWORD!","WARNING!!",JOptionPane.WARNING_MESSAGE);
                     	cnt=cnt+1;
-                   		txtuser.setText("");
+                   	txtuser.setText("");
                     	txtpass.setText("");
                 	}		
-    			
     				if(cnt==3)
     				{
     				   dispose();
     				}
     			}
-    		    //dispose();
     		} 	
                 
          
     	if(source==bClose)
     	{
-    		//System.exit(0);
     		dispose();
     	}
     }

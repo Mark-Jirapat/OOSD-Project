@@ -18,10 +18,7 @@ import java.util.HashMap;
 public class Reserve extends JFrame implements ActionListener
 {
 	HotelDB hdb;
-   /* public static void main(String[]args)
-	{
-	    setReserve();
-        }*/
+
 	String month[] = {"","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	String day[] = {"","1","2","3","4","5","6","7","8","9","10",
 					"11","12","13","14","15","16","17","18","19","20",
@@ -79,7 +76,7 @@ public class Reserve extends JFrame implements ActionListener
 	String Room_Size = "";
 	String No_Days  = "";
 	String Down  = "";
-	String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic"; // <- เปลี่ยน access ที่เก็บ Pic ไว้
+	String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic";
 	ImageIcon image = new ImageIcon(Access + "\\1.jpg");
 	JLabel back = new JLabel(image,JLabel.CENTER);
 	
@@ -157,28 +154,6 @@ public class Reserve extends JFrame implements ActionListener
     	bot3.addActionListener(this);
     	
     	con.add(back).setBounds(0,0,900,900);
-    	/*
-        try
-    	{
-			Class.forName("com.mysql.jdbc.Driver");
-
-			connect = DriverManager.getConnection(""
-					+ "jdbc:mysql://localhost/mydatabase"
-					+ "?user=root&password=root");
-
-			s = connect.createStatement();
-		}
-		catch(ClassNotFoundException e)  
-		{
- 			System.err.println("Failed to load driver");
- 			e.printStackTrace();
- 		}
- 		catch(SQLException e)
- 		{
- 			System.err.println("Unable to connect");
- 			e.printStackTrace();
- 		}
-        */
     }
      public void actionPerformed (ActionEvent e)
     {
@@ -191,9 +166,6 @@ public class Reserve extends JFrame implements ActionListener
     		
    			   String sql = "SELECT * FROM Hotel_CheckIn WHERE room ='"+txtRn.getText()+"'";
     			ArrayList<HashMap> list = hdb.db.queryRows(sql);
-				//st=cn.createStatement();
-				//rs=st.executeQuery("SELECT * FROM Hotel_reserve WHERE Room_No ='"+txtRn.getText()+"'");
-				//rs=st.executeQuery("SELECT * FROM Hotel_CheckIn WHERE Room_No ='"+txtRn.getText()+"'");
 				for(HashMap l : list)
 				{
 					Room_No = (String)(l.get("room"));
@@ -224,7 +196,6 @@ public class Reserve extends JFrame implements ActionListener
     		else
     		{
     			System.out.println(hdb.db.connect());
-				//"INSERT INTO Reservation (Room_No,Last_Name,Middle_Initial,First_Name,Contact_No,Address,Month,Day,Year,Room_Size,No_Days,Down) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 				sql = " INSERT INTO Hotel_reserve(room, name, middle, lastname, contact, address, month, day, year, room_size, no_day, down) VALUES ("
 		                + "'" +txtRn.getText() + "','"
 		                +  txtFn.getText() + "','"
@@ -239,25 +210,6 @@ public class Reserve extends JFrame implements ActionListener
 		                +  txtNd.getText() + "','"
 		                +  txt9.getText() + "')";
 				System.out.println(hdb.db.executeQuery(sql));
-				
-				
-				
-				
-				/*ps.setString(1,txtRn.getText());
-				ps.setString(2,txtLn.getText());
-				ps.setString(3,txtMi.getText());
-				ps.setString(4,txtFn.getText());
-				ps.setString(5,txtCo.getText());
-				ps.setString(6,txtAd.getText());
-				ps.setString(7,(String)cm.getSelectedItem());
-				ps.setString(8,(String)cd.getSelectedItem());
-				ps.setString(9,txtYr.getText());
-				ps.setString(10,(String)cs.getSelectedItem());
-				ps.setString(11,txtNd.getText());
-				ps.setString(12,txt9.getText());
-				ps.executeUpdate();*/
-				//INSERT INTO `Hotel_reserve`(`room`, `name`, `middle`, `lastname`, `contact`, `address`, `month`, `day`, `year`, `room_size`, `no_day`, `down`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12])
-				
 				JOptionPane.showMessageDialog(null,"New record has been successfully added!","Message",JOptionPane.INFORMATION_MESSAGE);
 				txtRn.requestFocus(true);
 				System.out.println(hdb.db.connect());
@@ -299,15 +251,7 @@ public class Reserve extends JFrame implements ActionListener
 	    	txt9.setText(""); 
     }
     public  void setReserve()
-    {
-    	/*Reserve frame = new Reserve();
-    	frame.setTitle("Hotel Reservation System");
-    	frame.setVisible(true);
-    	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    	frame.setLocation(100,5);
-    	frame.setSize((screen.width-850),screen.height-50);
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-    	
+    {	
     	setTitle("Hotel Reservation System");
     	setVisible(true);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

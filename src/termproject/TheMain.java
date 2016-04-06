@@ -16,17 +16,12 @@ import java.awt.event.*;
 public class TheMain extends JFrame implements ActionListener
 {
 	HotelDB hdb;
-   /* public static void main(String[]args)
-	{
-	    setMain();
-        }*/
-	JDesktopPane desktop = new JDesktopPane();
-	//JToolBar toolBar = new JToolBar(JToolBar.HORIZONTAL);
+   	JDesktopPane desktop = new JDesktopPane();
 	JLabel lab1= new JLabel ("Welcome");
 	JLabel lab2= new JLabel ("To");
 	JLabel lab3= new JLabel ("Group 6 - Hotel System");
 	JLabel lab4 = new JLabel ("Log-out");
-	String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic"; // <- เปลี่ยน access ที่เก็บ Pic ไว้
+	String Access = "C:\\Users\\USER\\Documents\\NetBeansProjects\\TermProject\\Pic";
 	JButton bcheck = new JButton("Check-in");
 	JButton breserve = new JButton("Reservation");
 	JButton bbill = new JButton("Billings");
@@ -112,13 +107,6 @@ public class TheMain extends JFrame implements ActionListener
        
      public  void setMain ()
     {
-    	/*TheMain frame = new TheMain();
-    	frame.setTitle("Hotel Reservation System");
-    	frame.setVisible(true);
-    	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    	frame.setLocation(100,5);
-    	frame.setSize((screen.width-870),screen.height-250);*/
-    	
     	setTitle("Hotel Reservation System");
         setVisible(true);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

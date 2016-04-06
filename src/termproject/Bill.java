@@ -19,10 +19,6 @@ import java.util.HashMap;
 public class Bill extends JFrame implements ActionListener
 {
 	HotelDB hdb;
-    /*public static void main(String[] args) 
-    {
-           setBill();
-    }*/
     	
         JButton bot1= new JButton ("Main");
 	JButton bot2= new JButton ("Clear");
@@ -178,23 +174,6 @@ public class Bill extends JFrame implements ActionListener
     	txtC.setEditable(false);
     	
     	con.add(back).setBounds(0,0,700,700);
-    	/*
-    	try
-    	{
-			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			cn = DriverManager.getConnection("jdbc:odbc:hotel");
-		}
-		catch(ClassNotFoundException e)  
-		{
- 			System.err.println("Failed to load driver");
- 			e.printStackTrace();
- 		}
- 		catch(SQLException e)
- 		{
- 			System.err.println("Unable to connect");
- 			e.printStackTrace();
- 		}
-        */
     }
     public void actionPerformed (ActionEvent e)
     {
@@ -216,33 +195,9 @@ public class Bill extends JFrame implements ActionListener
 		double family = 1000;
     	Object source = e.getSource();
     	
-//    	int Text8=(Integer.parseInt(txt8.getText()));
-//    	int Text9=(Integer.parseInt(txt9.getText()));
 		if(source == botS)
 		{
 		Room_No = txtRN.getText().trim();
-                                /*
-				try
-					{
-					Class.forName("com.mysql.jdbc.Driver");
-                                        
-                                        connect = DriverManager.getConnection(""
-                                                    + "jdbc:mysql://localhost/mydatabase"
-                                                    + "?user=root&password=root");
-                                        
-                                        s = connect.createStatement();
-					}
-				catch(ClassNotFoundException ex)  
-					{
- 						System.err.println("Failed to load driver");
- 						ex.printStackTrace();
- 					}
- 				catch(SQLException ex)
- 					{
- 						System.err.println("Unable to connect");
- 						ex.printStackTrace();
- 					}
-                                */
          if (!Room_No.equals(""))
          {	
         	System.out.println(hdb.db.connect());
@@ -369,48 +324,22 @@ public class Bill extends JFrame implements ActionListener
 			} 		 
 	 		if (DResult == JOptionPane.YES_OPTION)
          	{
-                /*
-         	try
-         	{
-			Class.forName("com.mysql.jdbc.Driver");
-                    
-			connect = DriverManager.getConnection(""
-					+ "jdbc:mysql://localhost/mydatabase"
-					+ "?user=root&password=root");
-
-                        s = connect.createStatement();
-			}
-			catch(ClassNotFoundException ex)  
-			{
- 				System.err.println("Failed to load driver");
- 				ex.printStackTrace();
- 			}
- 			catch(SQLException ex)
- 			{
- 				System.err.println("Unable to connect");
- 				ex.printStackTrace();
- 			}
-                */
             try
               {
             	    System.out.println(hdb.db.connect());  
 			    	Room_No = txtRN.getText().trim();	              
                          if ( !Room_No.equals(""))
                          {
-                                   	/*String query = "SELECT * FROM Check_In WHERE Room_No='" + Room_No+"'";
-                					ResultSet rss = stmt.executeQuery(query);
-                					rss.next();
-                					String code=rss.getString(3);*/
-	
-                        	       String sql = "DELETE from Hotel_CheckIn" + " WHERE room = '" + Room_No + "'";
-                            	   System.out.println(hdb.db.executeQuery(sql));
+                                   	
+                        	String sql = "DELETE from Hotel_CheckIn" + " WHERE room = '" + Room_No + "'";
+                            	System.out.println(hdb.db.executeQuery(sql));
                             	int result = 1;
                                    if ( result == 1)
                                  	{
                                  	dialogmessage = "Thank You Come Again..!";
-                    				dialogtype = JOptionPane.WARNING_MESSAGE;
-                    				JOptionPane.showMessageDialog((Component)null, dialogmessage, dialogs, dialogtype);
-                    				clear();
+                    			dialogtype = JOptionPane.WARNING_MESSAGE;
+                    			JOptionPane.showMessageDialog((Component)null, dialogmessage, dialogs, dialogtype);
+                    			clear();
                               		}
                         }  
                  System.out.println(hdb.db.disconnect());     
@@ -460,14 +389,6 @@ public class Bill extends JFrame implements ActionListener
     }
     public  void setBill()
     {
-    	/*Bill frame = new Bill();
-    	frame.setTitle("Hotel Reservation System");
-    	frame.setVisible(true);
-    	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    	frame.setLocation(100,5);
-    	frame.setSize((screen.width-650),screen.height-50);
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-    	
     	setTitle("Hotel Reservation System");
     	setVisible(true);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
